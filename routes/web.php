@@ -23,36 +23,36 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hello', function() {
+Route::get('/hello', function () {
     return 'Hello World';
 });
 
-Route::get('/world', function() {
+Route::get('/world', function () {
     return 'World';
 });
 
-Route::get('/', function() {
+Route::get('/', function () {
     return 'Selamat Datang';
 });
 
-Route::get('/about', function() {
+Route::get('/about', function () {
     return '2241760031, Tia Arvivolia';
 });
 
-Route::get('/user/{name}', function($name) {
-   return 'Nama saya ' .$name; 
+Route::get('/user/{name}', function ($name) {
+    return 'Nama saya ' . $name;
 });
 
 Route::get('/posts/{post}/comments/{comment}', function ($postId, $commentId) {
-   return 'Pos ke-' .$postId. " Komentator ke-: " .$commentId;
+    return 'Pos ke-' . $postId . " Komentator ke-: " . $commentId;
 });
 
-Route::get('/articles/{id}', function($id) {
+Route::get('/articles/{id}', function ($id) {
     return 'Halaman Artikel dengan ID ' . $id;
 });
 
-Route::get('/user/{name?}', function($name='John') {
-    return 'Nama saya ' .$name;
+Route::get('/user/{name?}', function ($name = 'John') {
+    return 'Nama saya ' . $name;
 });
 
 Route::get('/hello', [WelcomeController::class, 'hello']);
@@ -66,3 +66,7 @@ Route::get('/about', [AboutController::class, 'about']);
 Route::get('/articles/{id}', [ArticleController::class, 'articles']);
 
 Route::resource('photos', PhotoController::class);
+Route::get('/greeting', function () {
+    return view('blog.hello', ['name' => 'Andi']);
+});
+Route::get('/greeting', [WelcomeController::class,'greeting']);
